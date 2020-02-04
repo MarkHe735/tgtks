@@ -1,0 +1,3 @@
+sex,MEAN(data_set.value2),MEAN(data_set.col1),MAX(data_set.value2),MAX(data_set.col1),MIN(data_set.value2),MIN(data_set.col1),COUNT(data_set),SUM(data_set.value2),SUM(data_set.col1),STD(data_set.value2),STD(data_set.col1)
+F,24044.75,1.75,34688,3,12345,1,4,96179,7,9141.863718629807,0.9574271077563381
+M,45857.5,1.75,78954,3,4356,1,4,183430,7,33295.00260299334,0.9574271077563381

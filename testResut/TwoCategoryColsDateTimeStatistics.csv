@@ -1,0 +1,3 @@
+sex,SUM(category.label),"SUM(category.TIME_SINCE_PREVIOUS(applyDate, unit=days))",MEAN(category.label),"MEAN(category.TIME_SINCE_PREVIOUS(applyDate, unit=days))",MIN(category.label),"MIN(category.TIME_SINCE_PREVIOUS(applyDate, unit=days))",COUNT(category),STD(category.label),"STD(category.TIME_SINCE_PREVIOUS(applyDate, unit=days))",MAX(category.label),"MAX(category.TIME_SINCE_PREVIOUS(applyDate, unit=days))","MEAN(category.TIME_SINCE_PREVIOUS(applyDate, unit=days) WHERE label = 1)","MEAN(category.TIME_SINCE_PREVIOUS(applyDate, unit=days) WHERE label = 0)"
+F,2,107.0,0.5,35.666666666666664,0,30.0,4,0.5773502691896257,6.6583281184793925,1,43.0,38.5,30.0
+M,2,67.0,0.5,22.333333333333332,0,15.0,4,0.5773502691896257,8.736894948054106,1,32.0,32.0,17.5

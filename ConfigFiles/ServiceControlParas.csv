@@ -1,0 +1,6 @@
+serviceName,paraName,paraType,defaultValue
+RowPartitioningService ,nameofLabelCol,str,lebel
+RowPartitioningService ,flagOfShuffle,bool,True
+RowPartitioningService ,flagOfStratify,bool,True
+RowPartitioningService ,seedOfRandom,int,None
+RowPartitioningService ,ratioOfPartition,float,0.7

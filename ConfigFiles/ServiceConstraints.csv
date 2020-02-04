@@ -1,0 +1,2 @@
+serviceName,constraintMethod,parameterList
+RowPartitioningService ,validate_label_in_df,"data, nameofLabelCol"
