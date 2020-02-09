@@ -83,5 +83,6 @@ class CategoryColumnMissingValueImputingService(DService):
                 # TODO: 只使用mode方法填充空值，methodDefault是否还需要？考虑清理
                 raise Exception("error method")
 
-            data[colName].fillna(str, inplace=True)
+            data[colName] = data[colName].fillna(str)
+        data = data.compute()
         return data

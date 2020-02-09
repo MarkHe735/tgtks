@@ -44,5 +44,6 @@ class ToCategoryConvertingService(DService):
             # 将所有值均加后缀：S
             d[colName] = d[colName].map(lambda x: str(x) + 'S')
         # 更正nan值
-        d.replace('nanS', np.NaN, inplace=True)
+        d = d.replace('nanS', np.NaN)
+        d = d.compute()
         return d

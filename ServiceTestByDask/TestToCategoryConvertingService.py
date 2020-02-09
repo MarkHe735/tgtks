@@ -1,13 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import pandas as pd
+import numpy as np
+import dask.dataframe as dd
 
-from ServiceImplByPandas.ToCategoryConvertingService import ToCategoryConvertingService
+from ServiceImplByDask.ToCategoryConvertingService import ToCategoryConvertingService
 
 
 def main():
-    data = pd.read_csv("/home/user/test.csv")
+    data_dtypes = {'PAY_AMT1': np.float32, 'PAY_AMT2': np.float32, 'PAY_AMT3': np.float32,
+                   'PAY_AMT4': np.float32, 'PAY_AMT5': np.float32, 'PAY_AMT6': np.float32, 'target': np.int32}
+    data = dd.read_csv("E:/data/UCI_Credit_Card.csv", dtype=data_dtypes, usecols=data_dtypes.keys())
+
     dic1 = dict()
     dic1['data'] = data
 

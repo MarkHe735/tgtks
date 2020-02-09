@@ -52,7 +52,7 @@ class ColumnFilteringService(DService):
             else:
                 colsExcluded.append(colName)
         # 将数据分组
-        dataWithColumnIncluded = data[colsIncluded]
-        dataWithoutColumnIncluded = data[colsExcluded]
+        dataWithColumnIncluded = data[colsIncluded].compute()
+        dataWithoutColumnIncluded = data[colsExcluded].compute()
 
         return dataWithColumnIncluded, dataWithoutColumnIncluded

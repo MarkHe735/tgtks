@@ -27,8 +27,8 @@ class ColumnConcatingService(DService):
             raise Exception("no input dataRight")
 
         # TODO: 应统一做内部方法封装
-        d1 = dataLeft.reset_index(drop=True)
-        d2 = dataRight.reset_index(drop=True)
+        d1 = dataLeft.reset_index(drop=True).compute()
+        d2 = dataRight.reset_index(drop=True).compute()
 
         list = []
         if (d1.shape[1] > 0):

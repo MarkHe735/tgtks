@@ -59,7 +59,7 @@ class NumberColumnMissingValueImputingService(DService):
         """
         dataProfile = dataProfile.set_index(dataProfile['col_name'])
         # TODO: 考虑deep copy的内存占用问题
-        data_copy = data.copy(deep=True)
+        # data_copy = data.copy(deep=True)
         # 循环各列
         for colName in data.columns:
             method = dictOfMethod.get(colName)
@@ -75,6 +75,7 @@ class NumberColumnMissingValueImputingService(DService):
                 value = float(method[6:])
             else:
                 raise Exception("error method")
-            data_copy[colName].fillna(value, inplace=True)
+            data[colName] = data[colName].fillna(value)
+        data = data.compute()
 
-        return data_copy
+        return data

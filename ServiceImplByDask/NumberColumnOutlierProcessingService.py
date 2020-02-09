@@ -58,8 +58,9 @@ class NumberColumnOutlierProcessingService(DService):
         """
         dataProfile = dataProfile.set_index(dataProfile['col_name'])
         # TODO: 考虑deep copy的内存占用问题
-        data_copy = data.copy(deep=True)
+        # data_copy = data.copy(deep=True)
         # 循环各列
+        data = data.compute()
         for colName in data.columns:
             # 获取异常值处理方法
             method = dictOfMethod.get(colName)
@@ -68,20 +69,20 @@ class NumberColumnOutlierProcessingService(DService):
             # 获取数值边界
             # value_max = dataProfile.loc[colName, 'max']
             # value_min = dataProfile.loc[colName, 'min']
-            if (method == 'iqr'):
+            if method == 'iqr':
                 iqr = dataProfile.loc[colName, '75%'] - dataProfile.loc[colName, '25%']
                 value_max = dataProfile.loc[colName, '75%'] + 2.5 * iqr
                 value_min = dataProfile.loc[colName, '25%'] - 2.5 * iqr
-            elif (method == 'sigma'):
+            elif method == 'sigma':
                 std = dataProfile.loc[colName, 'std']
                 value_max = dataProfile.loc[colName, 'mean'] + 4.0 * std
                 value_min = dataProfile.loc[colName, 'mean'] - 4.0 * std
             else:
                 raise Exception("error method")
             # 用边界值替换异常值
-            index = data_copy[colName] > value_max
-            data_copy.loc[index, colName] = value_max
-            index = data_copy[colName] < value_min
-            data_copy.loc[index, colName] = value_min
+            index = data[colName] > value_max
+            data.loc[index, colName] = value_max
+            index = data[colName] < value_min
+            data.loc[index, colName] = value_min
 
-        return data_copy
+        return data
